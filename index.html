@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <title>MI PRIMERA VEZ CON JAVASCRIPT</title> 
+</head>
+<body>
+    <nav class="navbar fg-2 bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="Cecytem-logojpg.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Practica 1 JavaScript
+            </a>
+        </div>
+    </nav>
+    
+
+    <div class="container p-4">
+        <div class="row">
+            <div class="col">
+                <button class="btn-solid theme-danger my-3" onclick="mensaje()"><i class="bi bi-trash mx-1"></i>Eliminar</button>
+                <button class="btn-text theme-secondary my-3" onclick="mensaje1()"><i class="bi bi-5-square-fill mx-1"></i>queso</button>
+                <button class="btn-solid theme-success my-3" onclick="mensaje2()"><i class="bi bi-6-circle-fill mx-1"></i>pisina</button>
+                <button class="btn-outline theme-primary my-3" onclick="mensaje3()"><i class="bi bi-activity mx-1"></i>gato</button>
+                <button class="btn-outline theme-warning my-3" onclick="mensaje4()"><i class="bi bi-airplane-engines mx_1"></i>quesadilla</button>
+            </div>
+            <div class="col">
+                <button class="btn-text theme-warning my-3" onclick="mensaje5()"><i class="bi bi-alarm-fill"></i>tortilla</button>
+                <button class="btn-solid theme-info my-3" onclick="mensaje6()"><i class="bi bi-align-center"></i>pure</button>
+                <button class="btn-outline theme-inverse my-3" onclick="mensaje7()"><i class="bi bi-alipay"></i></i>aguacate</button>
+                <button class="btn-subtle theme-secondary my-3" onclick="mensaje8()"><i class="bi bi-alphabet"></i>auigsduyasd</button>
+                <button class="btn-solid theme-primary my-3" onclick="mensaje9()"><i class="bi bi-amazon"></i>no se que poner</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+    <script>
+        function mensaje(){
+            Swal.fire({
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success"
+            });
+        }
+        function mensaje1(){
+            Swal.fire({
+            title: "The Internet?",
+            text: "That thing is still around?",
+            icon: "question"
+            });
+        }
+        function mensaje2(){
+            Swal.fire({
+            imageUrl: "https://www.facebook.com/PHD6742/posts/plantilla-anonymous-dando-un-mensajem%C3%A1s-versiones-en-los-comentarioscalidad-720p/3020510968032610/",
+            imageHeight: 1500,
+            imageAlt: "A tall image"
+            });
+        }
+        function mensaje3(){
+            Swal.fire({
+            title: "Drag me!",
+            icon: "success",
+            draggable: true
+            });
+        }
+        function mensaje4(){
+            Swal.fire({
+            title: "Do you want to save the changes?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Save",
+            denyButtonText: `Don't save`
+            }).then((result) => {
+            if (result.isConfirmed) Swal.fire("Saved!", "", "success");
+            else if (result.isDenied) Swal.fire("Changes are not saved", "", "info");
+            });
+        }
+        function mensaje5(){
+            Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+            });
+        }
+        function mensaje6(){
+            Swal.fire({
+            title: "Submit your GitHub username",
+            input: "text",
+            inputAttributes: { autocapitalize: "off" },
+            showCancelButton: true,
+            confirmButtonText: "Look up",
+            showLoaderOnConfirm: true,
+            preConfirm: async (login) => {
+                try {
+                const githubUrl = `
+                    https://api.github.com/users/${login}
+                `;
+                const response = await fetch(githubUrl);
+                if (!response.ok) return Swal.showValidationMessage(`
+                    ${JSON.stringify(await response.json())}
+                    `);
+                return response.json();
+                } catch (error) {
+                Swal.showValidationMessage(`
+                    Request failed: ${error}
+                `);
+                }
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+            if (result.isConfirmed) Swal.fire({
+                title: `${result.value.login}'s avatar`,
+                imageUrl: result.value.avatar_url
+            });
+            });
+        }
+        function mensaje7(){
+            Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+            if (result.isConfirmed) Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+            });
+        }
+        function mensaje8(){
+            const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+            });
+            swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+            }).then((result) => {
+            if (result.isConfirmed) swalWithBootstrapButtons.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+            else if (result.dismiss === Swal.DismissReason.cancel)
+            /* Read more about handling dismissals below */
+            swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "Your imaginary file is safe :)",
+                icon: "error"
+            });
+            });
+        }
+        function mensaje9(){
+            Swal.fire({
+            title: "Sweet!",
+            text: "Modal with a custom image.",
+            imageUrl: "https://cecytem.edomex.gob.mx/temascaltepec",
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: "Custom image"
+            });
+        }
+       
+    </script>
+</body>
+</html>
