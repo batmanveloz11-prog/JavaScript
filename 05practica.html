@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <title>MI PRIMERA VEZ CON JAVASCRIPT</title>
+</head>
+<body onload="calcular()">
+    <nav class="navbar bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/Cecytem-logojpg.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Prácticas JavaScript
+            </a>
+        </div>
+    </nav>
+
+    <div class="container p-4 bg-info-subtle mt-5 card shadow">
+        <div class="row align-items-center mb-2">
+            <div class="col-auto">
+                <img src="img/elektra/elektra-removebg-preview.png" alt="Logo Elektra" style="width: 140px; height: auto;">
+            </div>
+            <div class="col">
+                <h2 class="mb-0"></h2>
+            </div>
+        </div>
+        <hr>
+
+        <h4>Productos:</h4>
+        <div class="row">
+            <div class="col">
+                <select id="producto" class="form-control" onchange="calcular()">
+                    <option value="laptop">Laptop</option>
+                    <option value="lavadora">Lavadora</option>
+                    <option value="nintendo">Nintendo</option>
+                    <option value="patinElectrico">Patín eléctrico</option>
+                    <option value="sala">Sala</option>
+                    <option value="Television">Televisión</option>
+                </select>
+                <div id="precio" class="fs-4 fw-bold">Precio: $0.00 MXN</div>
+            </div>
+            <div class="row col-md-6 text-end">
+                <div id="img"></div>
+            </div>
+        </div>
+
+        
+        <hr>
+        <div class="row"> 
+            <table>
+                <td>
+                    <div class="col-md-6">
+                <h3>Plazo</h3>
+                <div class="form-check">
+                    <button type="button" class="btn-subtle theme-secondary">
+                        <input class="form-check-input" type="radio" name="plazo" id="uno" onchange="calcular()" checked>
+                        <label class="form-check-label" for="uno">6 meses (+10%)</label>
+                    </button>
+                    
+                </div>
+                <div class="form-check">
+                    <button type="button" class="btn-subtle theme-secondary">
+                        <input class="form-check-input" type="radio" name="plazo" id="dos" onchange="calcular()">
+                        <label class="form-check-label" for="dos">12 meses (+15%)</label>
+                    </button>
+                </div>
+                <div class="form-check">
+                    <button type="button" class="btn-subtle theme-secondary">
+                        <input class="form-check-input" type="radio" name="plazo" id="tres" onchange="calcular()">
+                        <label class="form-check-label" for="tres">18 meses (+20%)</label>
+                    </button>
+                </div>
+            </div>
+                </td>
+                <td>
+                     <div class="col-md-6">
+                        <h3>Cantidad</h3>
+                        <input type="number" class="form-control w-50" value="1" min="1" max="10" id="cantidad" onchange="calcular()">
+                    </div>
+                </td>
+            </table>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div id="contado">Precio de contado: $0.00 MXN</div>
+                <div id="credito">Precio con crédito: $0.00 MXN</div>
+                <div id="abono" class="fw-bold fs-5">Abono Mensual: $0.00 MXN</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/05appElektra.js"></script>
+</body>
+</html>

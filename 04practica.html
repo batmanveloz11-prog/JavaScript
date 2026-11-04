@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <title>MI PRIMERA VEZ CON JAVASCRIPT</title> 
+</head>
+<body>
+    <nav class="navbar fg-2 bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/Cecytem-logojpg.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Practicas JavaScript
+            </a>
+        </div>
+    </nav>
+    
+
+    <div class="container p-4 bg-info mt-5 card">
+        <h1 class="text-center">Practica Signos</h1>
+        <div class="row">
+            <div class="col">
+                <h5 id="valorDia">Dia 1</h5>
+                <input type="range" class="form-control" id="dia" min="1" max="30" value="1">
+                <h5>Mes</h5>
+                <select class="form-control" id="mes">
+                    <option value="ENERO">ENERO</option>
+                    <option value="FEBRERO">FEBRERO</option>
+                    <option value="MARZO">MARZO</option>
+                    <option value="ABRIL">ABRIL</option>
+                    <option value="MAYO">MAYO</option>
+                    <option value="JUNIO">JUNIO</option>
+                    <option value="JULIO">JULIO</option>
+                    <option value="AGOSTO">AGOSTO</option>
+                    <option value="SEPTIEMBRE">SEPTIEMBRE</option>
+                    <option value="OCTUBRE">OCTUBRE</option>
+                    <option value="NOVIEMBRE">NOVIEMBRE</option>
+                    <option value="DICIEMBRE">DICIEMBRE</option>
+                </select>
+                <h2 id="fecha" class="text-center">Fecha</h2>
+                <button class="btn-solid theme-warning mt-3 w-100" id="reset">Reset</button>
+                
+            </div>
+            <div class="col">
+
+                <img src="img/signos/menu.jpg" id="signo" width="100%">
+
+            </div>
+            <br>
+            <br>
+            <video src="2026-10-25 20-23-03.mp4" autoplay controls muted></video>
+        </div>
+    </div>
+
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/04signos.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <title>MI PRIMERA VEZ CON JAVASCRIPT</title> 
+</head>
+<body>
+    <nav class="navbar bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#">
+                <img src="img/Cecytem-logojpg.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Prácticas JavaScript
+            </a>
+        </div>
+    </nav>
+    
+    <div class="container p-4 bg-info mt-5 card">
+        <div class="row">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td>
+                            <form id="formIMC">
+                                <h3 class="mb-3">Calculadora de IMC</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="peso" class="form-label">Peso (kg):</label>
+                                        <input type="number" step="0.1" id="peso" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="altura" class="form-label">Altura (m):</label>
+                                        <input type="number" step="0.01" id="altura" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mt-3">
+                                    <h4 id="resultadoTitulo"></h4>
+                                    <h3 id="resultado"></h3>
+                                    <br>
+                                    <button type="button" id="calcular" class="btn btn-primary me-2">Calcular IMC</button>
+                                    <button type="reset" id="reset" class="btn btn-secondary">Limpiar</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <img src="img/WhatsApp Image 2026-11-04 at 12.00.50 PM.jpeg" style="max-width: 400px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/IMC.js"></script>
+</body>
+</html>
