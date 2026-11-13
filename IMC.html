@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">
+            <a class="navbar-brand text-white" href="index.html">
                 <img src="img/Cecytem-logojpg.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 Prácticas JavaScript
             </a>
@@ -23,12 +23,12 @@
                 <tbody>
                     <tr>
                         <td>
-                            <form id="formIMC">
+                            <form id="formIMC" class="needs-validation" novalidate>
                                 <h3 class="mb-3">Calculadora de IMC</h3>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="peso" class="form-label">Peso (kg):</label>
-                                        <input type="number" step="0.1" id="peso" class="form-control">
+                                        <input type="number" step="0.1" id="peso" class="form-control" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="altura" class="form-label">Altura (m):</label>

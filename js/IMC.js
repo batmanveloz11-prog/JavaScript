@@ -18,7 +18,7 @@ const clickBtnCalcular = (e) => {
     const peso = parseFloat(txtPeso.value);
     const altura = parseFloat(txtAltura.value);
 
-    if (isNaN(peso) || isNaN(altura) || altura <= 0 || peso <= 0) {
+    /*if (isNaN(peso) || isNaN(altura) || altura <= 0 || peso <= 0) {
         if (typeof Swal !== 'undefined') {
             Swal.fire({
                 icon: 'error',
@@ -29,7 +29,7 @@ const clickBtnCalcular = (e) => {
             alert("Por favor ingresa un peso y una altura válidos.");
         }
         return;
-    }
+    }*/
 
     const imc = peso / (altura * altura);
     
@@ -38,8 +38,19 @@ const clickBtnCalcular = (e) => {
     else if (imc < 25) diagnostico = `<b style="color: green;"> Peso normal </b>`;
     else if (imc < 30) diagnostico = `<b style="color: orange;"> Sobrepeso </b>`;
     else diagnostico = `<b style="color: red;"> Obesidad </b>`;
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = `${imc.toFixed(2)} - ${diagnostico}`;
+
+    resultado.animate(
+        [
+            { opacity: 0, transform: 'translateX(20px) scale(0.9)' },
+            { opacity: 1, transform: 'translateX(0) scale(1)' }
+        ],
+        { duration: 500, easing: 'ease-out', fill: 'forwards' }
+    );
 
     document.getElementById("resultado").innerHTML = `${imc.toFixed(2)} - ${diagnostico}`;
+
 };
 
 window.onload = iniciar;

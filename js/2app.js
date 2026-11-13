@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let a = parseFloat(inputAltura.value);
 
     document.querySelector("#vb").innerHTML = `<b style="color:red">${b}</b>`;
-    document.querySelector("#va").innerHTML = `<b style="color:green">${a}</b>`;
+    document.que
+    rySelector("#va").innerHTML = `<b style="color:green">${a}</b>`;
 
     let area = (b * a) / 2;
     document.querySelector("#area").innerHTML = `<b style="color:blue;font-size:40px">${area.toFixed(2)}</b>`;
