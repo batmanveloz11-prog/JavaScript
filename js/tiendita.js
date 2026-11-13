@@ -4,13 +4,15 @@ var productos=[];
 btnSave.onclick=()=>{
     txtNombre=document.getElementById("nombre");
     txtPrecio=document.getElementById("precio");
-    if (txtNombre.value==""||txtPrecio.value=="") {
+    txtCantidad=document.getElementById("cantidad")
+    if (txtNombre.value==""||txtPrecio.value=="" ||txtCantidad.value=="") {
         alert("ERROR: CAMPOS VACIOS")
     return;
     }
     const producto= {
         nombre:txtNombre.value, 
-        precio:txtPrecio.value
+        precio:txtPrecio.value,
+        cantidad:txtCantidad.value
     };
 
     productos.push(producto);
@@ -20,17 +22,20 @@ btnSave.onclick=()=>{
     document.getElementById("addProducto").close();
     document.getElementById("nombre").value="";
     document.getElementById("precio").value="";
+    document.getElementById("cantidad").value="";
 }
 btnEdit.onclick=()=>{
     txtNombre=document.getElementById("nombree");
     txtPrecio=document.getElementById("precioe");
+    txtCantidad=document.getElementById("cantidade");
     posicion=document.getElementById("posicion")
-    if (txtNombre.value==""||txtPrecio.value=="") {
+    if (txtNombre.value==""||txtPrecio.value==""||txtCantidad.value=="") {
         alert("ERROR: CAMPOS VACIOS")
     return;
     }
     productos[posicion.value].nombre=txtNombre.value;
     productos[posicion.value].precio=txtPrecio.value;
+    productos[posicion.value].cantidad=txtCantidad.value;
     localStorage.setItem("productos",JSON.stringify(productos));
     cargarProductos();
     document.getElementById("editProducto").close();
@@ -44,6 +49,8 @@ const cargarProductos=()=>{
         tabla+=`<tr class="text-center">
                     <td><b>${producto.nombre.toUpperCase()}</b></td>
                     <td><b>${parseFloat(producto.precio).toFixed(2)}</b></td>
+                    <td><b>${parseInt(producto.cantidad)}</b></td>
+
                     <td>
                         <button class="btn-solid theme-danger" onclick="eliminarProducto(${posicion})"><i class="bi bi-trash"></i></button>
                         <button class="btn-solid theme-warning" data-bs-toggle="dialog" data-bs-target="#editProducto" onclick="editarProducto(${posicion})"><i class="bi bi-pen"></i></button>
@@ -90,6 +97,7 @@ const editarProducto=(posicion)=>{
     const producto=productos[posicion];
     document.getElementById("nombree").value=producto.nombre;
     document.getElementById("precioe").value=producto.precio;
+    document.getElementById("cantidade").value=producto.cantidad;
     document.getElementById("posicion").value=posicion;
 
 
