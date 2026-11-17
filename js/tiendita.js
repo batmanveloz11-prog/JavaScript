@@ -1,4 +1,4 @@
-// ===================== UTILIDADES =====================
+
 // Convierte un archivo (input type="file") a base64. Si no hay archivo devuelve ""
 const archivoABase64 = (archivo) => new Promise((resolve, reject) => {
     if (!archivo) { resolve(""); return; }
@@ -23,7 +23,6 @@ const negro = Swal.mixin({
     buttonsStyling: false
 });
 
-// ===================== PRODUCTOS =====================
 var btnSave = document.getElementById("btnSave");
 var btnEdit = document.getElementById("btnEdit");
 var productos = [];
@@ -87,12 +86,14 @@ const cargarProductos = () => {
     let posicion = 0;
     productos = JSON.parse(localStorage.getItem("productos")) || [];
     const tbody = document.getElementById("productos");
+    const flitro=document.getElementById("filtroCategoria").value;
     var tabla = "";
     productos.map((producto) => {
-        const img = producto.imagen
-            ? `<img src="${producto.imagen}" alt="${producto.nombre}" style="width:60px;height:60px;object-fit:cover;">`
-            : "Sin imagen";
-        tabla += `<tr class="text-center">
+        if(flitro==""|| producto.categoria==flitro){
+            const img = producto.imagen
+                ? `<img src="${producto.imagen}" alt="${producto.nombre}" style="width:60px;height:60px;object-fit:cover;">`
+                : "Sin imagen";
+            tabla += `<tr class="text-center">
                     <td><b>${producto.nombre.toUpperCase()}</b></td>
                     <td><b>${parseFloat(producto.precio).toFixed(2)}</b></td>
                     <td><b>${parseInt(producto.cantidad)}</b></td>
@@ -102,11 +103,16 @@ const cargarProductos = () => {
                         <button class="btn-solid theme-danger" onclick="eliminarProducto(${posicion})"><i class="bi bi-trash"></i></button>
                         <button class="btn-solid theme-warning" data-bs-toggle="dialog" data-bs-target="#editProducto" onclick="editarProducto(${posicion})"><i class="bi bi-pen"></i></button>
                     </td>
-                </tr>`;
+            </tr>`;
+        }
+        
         posicion++;
     });
     tbody.innerHTML = tabla;
 };
+document.getElementById("filtroCategoria").onchange=()=>{
+    cargarProductos();
+}
 
 const eliminarProducto = (posicion) => {
     swalWithBootstrapButtons.fire({
@@ -137,7 +143,6 @@ const editarProducto = (posicion) => {
     document.getElementById("posicion").value = posicion;
 };
 
-// ===================== CATEGORIAS =====================
 var btnSaveC = document.getElementById("btnSaveCategoria");
 var btnEditC = document.getElementById("btnEditCategoria");
 
@@ -205,6 +210,8 @@ const llenarSelectCategorias = () => {
         select.innerHTML = opciones;
         select.value = valorActual;
     });
+    const filtro=document.getElementById("filtroCategoria");
+    filtro.innerHTML= filtro.innerHTML = '<option value="">Todas las categorias</option>' + categorias.map(c => `<option value="${c.categoria}">${c.categoria}</option>`).join("");
 };
 
 const cargarCategorias = () => {
