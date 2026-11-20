@@ -13,7 +13,6 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-// ---------- Guarda el token y los datos de la sesión ----------
 export const guardarToken = async (user) => {
   const r = await user.getIdTokenResult();
   localStorage.setItem("token", r.token);
@@ -21,7 +20,6 @@ export const guardarToken = async (user) => {
   localStorage.setItem("email", user.email);
 };
 
-// ---------- Guarda el token y suma un acceso ----------
 export const registrarAcceso = async (user, tipo) => {
   await guardarToken(user);
 
@@ -37,20 +35,18 @@ export const registrarAcceso = async (user, tipo) => {
   datos.total += 1;
   datos.ultimoAcceso = ahora;
   datos.historial.push({ tipo, fecha: ahora });
-  datos.historial = datos.historial.slice(-20); // guarda solo los últimos 20
+  datos.historial = datos.historial.slice(-20); 
 
   localStorage.setItem(clave, JSON.stringify(datos));
   return datos;
 };
 
-// Borra solo la sesión (el contador de accesos se conserva)
 export const limpiarSesion = () => {
   ["token", "refreshToken", "tokenExpira", "uid", "email"].forEach((k) =>
     localStorage.removeItem(k)
   );
 };
 
-// Actualiza el token en localStorage cuando Firebase lo renueva (cada ~1 hora)
 onIdTokenChanged(auth, async (user) => {
   if (user) await guardarToken(user);
 });
